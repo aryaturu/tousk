@@ -8,7 +8,13 @@ use App\Http\Controllers\SoalCon;
 
 use App\Http\Controllers\NilaiCon;
 
-Route::get('/', [LoginCon::class, 'login'])->name('login');
+
+
+Route::get('/', function () {
+    return view('home');
+});
+
+Route::get('/login', [LoginCon::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginCon::class, 'actionlogin'])->name('actionlogin');
 Route::get('dashboard', [DashboardCon::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('actionlogout', [LoginCon::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
